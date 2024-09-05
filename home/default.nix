@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 
 {
@@ -30,7 +29,7 @@
     htop
     chezmoi
     pass
-    nixfmt-rfc-style
+    nixpkgs-fmt
   ];
 
   # This value determines the Home Manager release that your

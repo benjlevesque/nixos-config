@@ -5,10 +5,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+    inputs@{ self
+    , nixpkgs
+    , home-manager
+    , ...
+    }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -27,5 +32,24 @@
           ];
         };
       };
+      checks = {
+        x86_64-linux = {
+          pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {
+            src = ./.;
+            hooks = {
+              nixpkgs-fmt.enable = true;
+            };
+          };
+        };
+      };
+      devShells = {
+        x86_64-linux = {
+          default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+            inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
+            buildInputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages;
+          };
+        };
+      };
+
     };
 }

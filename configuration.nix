@@ -112,9 +112,7 @@
       })
     ];
     fontconfig = {
-      defaultFonts = {
-
-      };
+      defaultFonts = { };
     };
   };
 
