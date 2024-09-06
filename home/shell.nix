@@ -19,6 +19,25 @@
     '';
   };
 
+  programs.readline = {
+    enable = true;
+    variables = {
+      show-all-if-ambiguous = true;
+      colored-completion-prefix = true;
+      colored-stats = true;
+      menu-complete-display-prefix = true;
+      bind-tty-special-chars = false;
+    };
+
+    bindings = {
+      "\\C-w" = "backward-kill-word";
+      ## arrow up
+      "\\e[A" = "history-search-backward";
+      ## arrow down
+      "\\e[B" = "history-search-forward";
+    };
+  };
+
   programs.starship = {
     enable = true;
     settings = {
