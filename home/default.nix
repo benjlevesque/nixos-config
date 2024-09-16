@@ -15,8 +15,15 @@
   # paths it should manage.
   home.username = "benji";
   home.homeDirectory = "/home/benji";
-  home.shellAliases = {
+  home.shellAliases =
+    {
     rebuild-nix = "nixos-rebuild --flake ~/.nixos --use-remote-sudo switch";
+      # navigation
+      "~" = "cd";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
   };
 
   nix.gc = {
