@@ -30,10 +30,11 @@
     };
 
     bindings = {
-      "\\C-w" = "backward-kill-word";
-      ## arrow up
+      # Ctrl-Backspace
+      "\\C-H" = "backward-kill-word";
+      # arrow up
       "\\e[A" = "history-search-backward";
-      ## arrow down
+      # arrow down
       "\\e[B" = "history-search-forward";
     };
   };
