@@ -32,6 +32,13 @@
           ];
         };
       };
+      # enable home-manager switch
+      homeConfigurations.benji =
+        home-manager.lib.homeManagerConfiguration {
+          modules = [ (import ./home) ];
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        };
+
       checks = {
         x86_64-linux = {
           pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {

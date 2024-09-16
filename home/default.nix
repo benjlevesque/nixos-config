@@ -11,20 +11,22 @@
     ./git.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "benji";
   home.homeDirectory = "/home/benji";
   home.shellAliases =
     {
-    rebuild-nix = "nixos-rebuild --flake ~/.nixos --use-remote-sudo switch";
+      rebuild-nix = "nixos-rebuild --flake ~/.nixos --use-remote-sudo switch";
+      rebuild-hm = "${pkgs.home-manager}/bin/home-manager switch --option eval-cache false  --flake '.#benji'";
       # navigation
       "~" = "cd";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
-  };
+    };
 
   nix.gc = {
     automatic = true;
