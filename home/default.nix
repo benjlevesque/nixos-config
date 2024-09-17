@@ -38,7 +38,6 @@
   home.packages = with pkgs; [
     htop
     chezmoi
-    nixpkgs-fmt
     keyd
     devenv
   ];
