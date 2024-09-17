@@ -9,6 +9,7 @@
     ./shell.nix
     ./editors.nix
     ./git.nix
+    ./security.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -37,7 +38,6 @@
   home.packages = with pkgs; [
     htop
     chezmoi
-    pass
     nixpkgs-fmt
     keyd
   ];
