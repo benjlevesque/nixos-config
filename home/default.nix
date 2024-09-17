@@ -40,6 +40,7 @@
     chezmoi
     nixpkgs-fmt
     keyd
+    devenv
   ];
 
   # This value determines the Home Manager release that your
