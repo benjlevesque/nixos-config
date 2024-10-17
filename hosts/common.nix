@@ -2,24 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -54,25 +43,6 @@
     layout = "us";
     variant = "symbolic";
   };
-
-  # Enable keyboard remapping daemon
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-
-        # Steelseries keyboard
-        ids = [ "04b4:0101" ];
-        settings = {
-          main = {
-            # This maps the capslock key to the "Super" key, to open Gnome search
-            capslock = "leftmeta";
-          };
-        };
-      };
-    };
-  };
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
