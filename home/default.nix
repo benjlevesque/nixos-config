@@ -42,6 +42,7 @@
     devenv
     httpie
     jq
+    gnomeExtensions.clipboard-history
   ];
 
   # This value determines the Home Manager release that your
@@ -66,5 +67,22 @@
   #  $DRY_RUN_CMD chezmoi update -a
   #   $DRY_RUN_CMD chezmoi git status
   #'';
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/shell" = {
+        disable-user-extensions = false;
+        enabled-extensions = [
+          pkgs.gnomeExtensions.clipboard-history.extensionUuid
+          pkgs.gnomeExtensions.auto-move-windows.extensionUuid
+        ];
+      };
+
+      "org/gnome/shell/extensions/auto-move-windows" = {
+        application-list = [ "firefox.desktop:1" "code.desktop:2" "org.gnome.Console.desktop:3" ];
+      };
+    };
+  };
 
 }
