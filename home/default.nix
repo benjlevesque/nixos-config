@@ -20,7 +20,7 @@
   home.shellAliases =
     {
       rebuild-nix = "nixos-rebuild --flake ~/.nixos --use-remote-sudo switch";
-      rebuild-hm = "${pkgs.home-manager}/bin/home-manager switch --option eval-cache false  --flake '.#benji'";
+      rebuild-hm = "${pkgs.home-manager}/bin/home-manager switch --option eval-cache false  --flake $HOME/.nixos#benji";
       # navigation
       "~" = "cd";
       ".." = "cd ..";
