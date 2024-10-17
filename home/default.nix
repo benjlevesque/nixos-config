@@ -40,6 +40,8 @@
     chezmoi
     keyd
     devenv
+    httpie
+    jq
   ];
 
   # This value determines the Home Manager release that your
