@@ -12,4 +12,10 @@
   };
 
   programs.gpg.enable = true;
+  programs.browserpass = {
+    enable = true;
+    browsers = [
+      "firefox"
+    ];
+  };
 }
