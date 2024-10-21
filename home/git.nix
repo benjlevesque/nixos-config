@@ -35,6 +35,7 @@
   ];
   home.shellAliases = {
     gco = "git checkout";
+    gcb = "git checkout -b";
     gst = "git status";
     grb = "git rebase";
     grbc = "git rebase --continue";
