@@ -81,7 +81,7 @@
       };
 
       "org/gnome/shell/extensions/auto-move-windows" = {
-        application-list = [ "firefox.desktop:1" "code.desktop:2" "org.gnome.Console.desktop:3" ];
+        application-list = [ "firefox.desktop:1" "code.desktop:2" ];
       };
     };
   };
