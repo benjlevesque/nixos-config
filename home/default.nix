@@ -76,6 +76,7 @@
         enabled-extensions = [
           pkgs.gnomeExtensions.clipboard-history.extensionUuid
           pkgs.gnomeExtensions.auto-move-windows.extensionUuid
+          "drive-menu@gnome-shell-extensions.gcampax.github.com"
         ];
       };
 
