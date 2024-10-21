@@ -83,6 +83,21 @@
       "org/gnome/shell/extensions/auto-move-windows" = {
         application-list = [ "firefox.desktop:1" "code.desktop:2" ];
       };
+
+      "org/gnome/desktop/input-sources" = {
+        sources = [ (lib.gvariant.mkTuple [ "xkb" "us+alt-intl" ]) ];
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        ];
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        binding = "<Primary><Alt>t";
+        command = "kgx";
+        name = "open-terminal";
+      };
     };
   };
 
