@@ -45,6 +45,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
               home-manager.users.benji = import ./home;
+              home-manager.users.benji.hashedPassword = "$y$j9T$cgN1DAqZHkG3Rgt/6/3nQ/$IOnwy2zFUwD91RavTU/WUObhnbQ/1QVQU/DRxXTmdyA";
 
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
