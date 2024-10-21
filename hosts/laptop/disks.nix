@@ -70,8 +70,7 @@
             size = "100%";
             content = {
               type = "swap";
-              passwordFile = "/tmp/secret.key";
-              resumeDevice = true;
+              randomEncryption = true;
             };
           };
         };
