@@ -13,6 +13,7 @@
   outputs =
     inputs@{ self
     , nixpkgs
+    , disko
     , home-manager
     , ...
     }:
