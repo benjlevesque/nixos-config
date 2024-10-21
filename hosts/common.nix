@@ -70,6 +70,9 @@
   users.users.benji = {
     isNormalUser = true;
     description = "Benjamin";
+    initialHashedPassword = "$y$j9T$cgN1DAqZHkG3Rgt/6/3nQ/$IOnwy2zFUwD91RavTU/WUObhnbQ/1QVQU/DRxXTmdyA";
+    openssh.authorizedKeys.keys  = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAEhA/hHVMDKFbnIZbUByWd1ux65Z7SawcejX3iDPti3 benji@bob-windows" ];
+
     extraGroups = [
       "networkmanager"
       "wheel"
