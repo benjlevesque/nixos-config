@@ -70,6 +70,7 @@
   users.users.benji = {
     isNormalUser = true;
     description = "Benjamin";
+
     extraGroups = [
       "networkmanager"
       "wheel"
