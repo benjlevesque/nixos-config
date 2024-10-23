@@ -141,12 +141,19 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  nix = {
-    settings.experimental-features = [
+  nix.optimise.automatic = true;
+  nix.settings = {
+    experimental-features = [
       "nix-command"
       "flakes"
     ];
-    optimise.automatic = true;
+    trusted-users = [ "root" "benji" ];
+    substituters = [
+      "https://devenv.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+    ];
   };
 
 }

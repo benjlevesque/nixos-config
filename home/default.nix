@@ -10,6 +10,7 @@
     ./editors.nix
     ./git.nix
     ./security.nix
+    ./devenv.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -38,7 +39,6 @@
   home.packages = with pkgs; [
     htop
     keyd
-    devenv
     httpie
     jq
     gnomeExtensions.clipboard-history
