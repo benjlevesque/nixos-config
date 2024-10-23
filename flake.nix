@@ -22,7 +22,7 @@
         nimbus = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/destkop
+            ./hosts/nimbus
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -38,7 +38,7 @@
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
-            ./hosts/laptop
+            ./hosts/comet
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
