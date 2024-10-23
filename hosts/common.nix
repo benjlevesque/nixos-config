@@ -31,6 +31,13 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  # Enable ibus for keyboard input
+  # See home/modules/layout.nix for layout configuration
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
