@@ -5,15 +5,6 @@
 }:
 
 {
-  imports = [
-    ./shell.nix
-    ./gnome.nix
-    ./security.nix
-    ./git.nix
-    ./editors.nix
-    ./devenv.nix
-  ];
-
   nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
