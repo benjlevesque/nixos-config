@@ -16,6 +16,7 @@
     ];
     bashrcExtra = ''
       bind '"\t":menu-complete'
+      bind -s 'set completion-ignore-case on'
     '';
   };
 
