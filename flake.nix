@@ -54,10 +54,18 @@
 
       };
       # enable home-manager switch
-      homeConfigurations.benji =
-        home-manager.lib.homeManagerConfiguration {
-          modules = [ (import ./home) ];
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      homeConfigurations =
+        {
+          "benji@comet" =
+            home-manager.lib.homeManagerConfiguration {
+              modules = [ (import ./home/comet) ];
+              pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            };
+          "benji@nimbus" =
+            home-manager.lib.homeManagerConfiguration {
+              modules = [ (import ./home/nimbus) ];
+              pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            };
         };
 
       checks = {
