@@ -37,7 +37,6 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     htop
-    chezmoi
     keyd
     devenv
     httpie
@@ -57,16 +56,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  #home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
-  #  PATH="${pkgs.chezmoi}/bin:${pkgs.git}/bin:${pkgs.git-lfs}/bin:''${PATH}"
-  #  
-  #  ssh-keyscan github.com >> ~/.ssh/known_hosts
-  #
-  #  $DRY_RUN_CMD chezmoi init benjlevesque --ssh
-  #  $DRY_RUN_CMD chezmoi update -a
-  #   $DRY_RUN_CMD chezmoi git status
-  #'';
 
   dconf = {
     enable = true;
