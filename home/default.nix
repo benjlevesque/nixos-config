@@ -74,9 +74,18 @@
         application-list = [ "firefox.desktop:1" "code.desktop:2" ];
       };
 
+      "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+      "org/gnome/mutter" = { edge-tiling = true; };
+
+
       "org/gnome/desktop/input-sources" = {
         sources = [ (lib.gvariant.mkTuple [ "xkb" "us+alt-intl" ]) ];
       };
+
+
+      # unused, just to "free" <Super>v an use it on clipboard-history
+      "org/gnome/shell/keybindings" = { toggle-message-tray = [ "<Control><Super>v" ]; };
+      "org/gnome/shell/extensions/clipboard-history" = { toggle-menu = [ "<Super>v" ]; };
 
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
