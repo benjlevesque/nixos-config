@@ -40,6 +40,7 @@
     };
   };
 
+  # prompt customization
   programs.starship = {
     enable = true;
     settings = {
@@ -51,19 +52,8 @@
     };
   };
 
-  programs.alacritty = {
-    enable = true;
-    # custom settings
-    settings = {
-      env.term = "xterm-256color";
-      font = {
-        size = 12;
-      };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
-    };
-  };
-
+  # Replaces `cd`
+  # https://github.com/ajeetdsouza/zoxide
   programs.zoxide = {
     enable = true;
     options = [
@@ -71,8 +61,23 @@
     ];
   };
 
+  # Replaces `ls`
+  # https://github.com/lsd-rs/lsd
   programs.lsd = {
     enable = true;
     enableAliases = true;
   };
+
+  # Aliases
+  home.shellAliases =
+    {
+      rebuild-nix = "nixos-rebuild --flake ~/.nixos --use-remote-sudo switch";
+      rebuild-hm = "${pkgs.home-manager}/bin/home-manager switch --option eval-cache false  --flake $HOME/.nixos#benji";
+      # navigation
+      "~" = "cd";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
+    };
 }
