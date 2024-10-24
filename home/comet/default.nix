@@ -7,6 +7,7 @@
     ../modules/git.nix
     ../modules/editors.nix
     ../modules/work.nix
+    ../modules/devenv.nix
     ../modules/layout.nix
   ];
 }
