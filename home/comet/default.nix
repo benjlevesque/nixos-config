@@ -9,5 +9,6 @@
     ../modules/work.nix
     ../modules/devenv.nix
     ../modules/layout.nix
+    ../modules/task.nix
   ];
 }
