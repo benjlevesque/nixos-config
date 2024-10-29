@@ -9,18 +9,24 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      brettm12345.nixfmt-vscode
       esbenp.prettier-vscode
       dbaeumer.vscode-eslint
+      jnoortheen.nix-ide
     ];
 
     userSettings = {
       "editor.fontFamily" = "FiraCode Nerd Font Mono";
 
       "window.menuBarVisibility" = "toggle";
-      "nixfmt.path" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
       "editor.formatOnSave" = true;
+      "nix.enableLanguageServer" = true;
+      "nix.serverSettings" = {
+        nil = {
+          formatting = {
+            command = [ "nixpkgs-fmt" ];
+          };
+        };
+      };
       "scm.defaultViewMode" = "tree";
       "terminal.integrated.defaultProfile.linux" = null;
       "terminal.integrated.shell.linux" = {
