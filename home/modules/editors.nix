@@ -41,9 +41,17 @@
     };
   };
 
+  programs.bash = {
+    # without this, EDITOR is overwritten with nano
+    initExtra = ''
+      export EDITOR=vim
+    '';
+  };
+
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    # not working, see above hack
+    # defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
