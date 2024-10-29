@@ -33,7 +33,7 @@
   home.packages = with pkgs; [
     gh
   ];
-  home.shellAliases = {
+  programs.bash.shellAliases = {
     gco = "git checkout";
     gcb = "git checkout -b";
     gst = "git status";
@@ -45,4 +45,12 @@
     pr = "git push && ${pkgs.gh}/bin/gh pr create --fill-first";
     ghst = "${pkgs.gh}/bin/gh status";
   };
+  programs.bash.initExtra = ''
+    source ${pkgs.git}/share/bash-completion/completions/git
+    _git_checkout_no_tags() {
+        __gitcomp_nl "$(__git_heads)"
+    }
+    __git_complete gco _git_checkout_no_tags
+  '';
+
 }
