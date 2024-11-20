@@ -96,6 +96,7 @@
     git
     vim
     wget
+    bind
   ];
 
   fonts = {
