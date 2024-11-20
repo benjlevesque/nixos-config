@@ -29,8 +29,10 @@
       };
       "scm.defaultViewMode" = "tree";
       "terminal.integrated.defaultProfile.linux" = null;
-      "terminal.integrated.shell.linux" = {
-        bash = "/run/current-system/sw/bin/bash";
+      "terminal.integrated.profiles.linux" = {
+        "bash" = {
+          "path" = "/run/current-system/sw/bin/bash";
+        };
       };
       "[typescriptreact]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
