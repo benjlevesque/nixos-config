@@ -30,9 +30,18 @@
       };
     };
   };
-  home.packages = with pkgs; [
-    gh
-  ];
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+      aliases = {
+        co = "pr checkout";
+      };
+    };
+    
+  };
+
   programs.bash.shellAliases = {
     gco = "git checkout";
     gcb = "git checkout -b";
