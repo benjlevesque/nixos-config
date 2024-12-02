@@ -98,6 +98,7 @@
     vim
     wget
     bind
+    chromium
   ];
 
   fonts = {
