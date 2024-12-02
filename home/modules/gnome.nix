@@ -1,6 +1,7 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     gnomeExtensions.clipboard-history
+    gnome-sound-recorder
   ];
 
   dconf = {
