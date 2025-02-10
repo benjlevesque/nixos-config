@@ -50,6 +50,11 @@
         command = "gnome-system-monitor";
         name = "open-monitor";
       };
+
+      "org/gtk/settings/file-chooser" = {
+        show-hidden = true;
+      };
+
     };
   };
 }
