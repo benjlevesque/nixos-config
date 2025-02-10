@@ -39,7 +39,7 @@
         co = "pr checkout";
       };
     };
-    
+
   };
 
   programs.bash.shellAliases = {
@@ -49,6 +49,7 @@
     grb = "git rebase";
     grbc = "git rebase --continue";
     gp = "git push";
+    gpf = "git push --force-with-lease";
     gcm = "git commit --message";
     glog = "git log --oneline --decorate --graph";
     pr = "git push && ${pkgs.gh}/bin/gh pr create --fill-first";
