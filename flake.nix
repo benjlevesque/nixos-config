@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     disko.url = "github:nix-community/disko";
@@ -14,14 +14,24 @@
   outputs =
     inputs@{ self
     , nixpkgs
+    , nixpkgs-unstable
     , disko
     , home-manager
     , ...
     }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+      unstable = import nixpkgs-unstable {
+        inherit system; config = { allowUnfree = true; };
+      };
+    in
     {
       nixosConfigurations = {
         nimbus = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
+          inherit unstable;
+
           modules = [
             ./hosts/nimbus
             home-manager.nixosModules.home-manager
@@ -36,7 +46,7 @@
           ];
         };
         comet = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           modules = [
             disko.nixosModules.disko
             ./hosts/comet
@@ -60,12 +70,15 @@
           "benji@comet" =
             home-manager.lib.homeManagerConfiguration {
               modules = [ (import ./home/comet) ];
-              pkgs = nixpkgs.legacyPackages.x86_64-linux;
+              inherit pkgs;
+              extraSpecialArgs = { inherit unstable; };
+
             };
           "benji@nimbus" =
             home-manager.lib.homeManagerConfiguration {
-              modules = [ (import ./home/nimbus) ];
-              pkgs = nixpkgs.legacyPackages.x86_64-linux;
+              modules = [ (import./home/nimbus) ];
+              inherit pkgs;
+              extraSpecialArgs = { inherit unstable; };
             };
         };
 

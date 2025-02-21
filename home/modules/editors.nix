@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 {
   home.packages = with pkgs; [
@@ -8,6 +8,8 @@
 
   programs.vscode = {
     enable = true;
+    package = unstable.vscode;
+
     extensions = with pkgs.vscode-extensions; [
       esbenp.prettier-vscode
       dbaeumer.vscode-eslint
