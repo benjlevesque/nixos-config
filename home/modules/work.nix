@@ -4,6 +4,7 @@
     scalingo
     clever-tools
     s3cmd
+    onlyoffice-bin
   ];
   
   dconf.settings = {

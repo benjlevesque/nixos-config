@@ -20,6 +20,8 @@
   home.packages = with pkgs; [
     httpie
     jq
+    gimp
+    inkscape
   ];
 
   # This value determines the Home Manager release that your

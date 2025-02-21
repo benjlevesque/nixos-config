@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     pass
     wl-clipboard
+    bitwarden-cli
   ];
 
   services.gpg-agent = {
