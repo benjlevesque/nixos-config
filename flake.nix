@@ -39,9 +39,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.benji = import ./home/nimbus;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
+              home-manager.extraSpecialArgs = { inherit unstable; };
             }
           ];
         };
@@ -56,9 +54,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "hm-backup";
               home-manager.users.benji = import ./home/comet;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
+              home-manager.extraSpecialArgs = { inherit unstable; };
             }
           ];
         };
