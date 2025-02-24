@@ -10,5 +10,6 @@
     ../modules/devenv.nix
     ../modules/layout.nix
     ../modules/task.nix
+    ../modules/git-rename-branch.nix
   ];
 }
