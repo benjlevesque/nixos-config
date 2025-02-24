@@ -15,6 +15,18 @@ let
       ldflags = [
         "-X 'main.version=${version}'"
       ];
+
+      nativeBuildInputs = with pkgs; [
+        installShellFiles
+      ];
+
+      # Install shell completions
+      postInstall = ''
+        installShellCompletion --cmd task \
+          --bash <($out/bin/task completion bash) \
+          --fish <($out/bin/task completion fish) \
+          --zsh <($out/bin/task completion zsh)
+      '';
     };
 in
 {
