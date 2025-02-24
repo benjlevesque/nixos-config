@@ -11,5 +11,6 @@
     ../modules/layout.nix
     ../modules/task.nix
     ../modules/git-rename-branch.nix
+    ../modules/git-autocommitmsg.nix
   ];
 }
