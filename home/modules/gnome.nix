@@ -14,7 +14,13 @@
           pkgs.gnomeExtensions.auto-move-windows.extensionUuid
           "drive-menu@gnome-shell-extensions.gcampax.github.com"
         ];
-        favorite-apps = [ "firefox.desktop" "org.gnome.Console.desktop" "org.gnome.Nautilus.desktop" "code.desktop" ];
+        favorite-apps = [
+          "firefox.desktop"
+          "org.gnome.Console.desktop"
+          "org.gnome.Nautilus.desktop"
+          "code.desktop"
+          "cursor.desktop"
+        ];
       };
 
       "org/gnome/shell/extensions/auto-move-windows" = {
