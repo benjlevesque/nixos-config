@@ -6,5 +6,8 @@
     ./fingerprint.nix
   ];
 
+  # BIOS updates
+  services.fwupd.enable = true;
+
   networking.hostName = "comet";
 }
