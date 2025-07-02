@@ -72,7 +72,7 @@
             };
           "benji@nimbus" =
             home-manager.lib.homeManagerConfiguration {
-              modules = [ (import./home/nimbus) ];
+              modules = [ (import ./home/nimbus) ];
               inherit pkgs;
               extraSpecialArgs = { inherit unstable; };
             };
