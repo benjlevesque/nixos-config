@@ -3,13 +3,13 @@ let
   git-rename-branch = pkgs.buildGoModule
     rec {
       pname = "git-rename-branch";
-      version = "1.0.1";
+      version = "1.0.2";
 
       src = pkgs.fetchFromGitHub {
         owner = "benjlevesque";
         repo = "git-rename-branch";
         rev = version;
-        hash = "sha256-MTiRn16uwOmvtXnN+O20nB+wEWKyXSnU1y9obJ5PD1c=";
+        hash = "sha256-t/6zt1gsB/bzl6a627l5pJUSuzUDj/7WdExp0Aoyalo=";
       };
       vendorHash = null;
       ldflags = [
