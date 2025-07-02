@@ -78,6 +78,7 @@
   users.users.benji = {
     isNormalUser = true;
     description = "Benjamin";
+    shell = pkgs.nushell;
 
     extraGroups = [
       "networkmanager"

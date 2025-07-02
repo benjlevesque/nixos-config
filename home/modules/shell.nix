@@ -20,6 +20,22 @@
     '';
   };
 
+  programs.nushell = {
+    enable = true;
+    settings = {
+      show_banner = false;
+      buffer_editor = "nvim";
+      history = {
+        file_format = "sqlite";
+        isolation = true;
+      };
+    };
+    extraConfig = ''
+      $env.DOCKER_HOST = $"unix://($env.XDG_RUNTIME_DIR)/docker.sock"
+    '';
+
+  };
+
   programs.readline = {
     enable = true;
     variables = {
@@ -50,6 +66,7 @@
         error_symbol = "[✗](bold red)";
       };
     };
+    enableNushellIntegration = true;
   };
 
   # Replaces `cd`
@@ -59,6 +76,12 @@
     options = [
       "--cmd cd"
     ];
+    enableNushellIntegration = true;
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
   };
 
   # Replaces `ls`
@@ -81,3 +104,4 @@
       "....." = "cd ../../../..";
     };
 }
+
