@@ -78,7 +78,7 @@
   users.users.benji = {
     isNormalUser = true;
     description = "Benjamin";
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
 
     extraGroups = [
       "networkmanager"
@@ -88,6 +88,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

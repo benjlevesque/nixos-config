@@ -36,6 +36,17 @@
 
   };
 
+
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      # "ohMyZsh" without Home Manager
+      enable = true;
+      plugins = [ "git" ];
+      theme = "amuse";
+    };
+  };
+
   programs.readline = {
     enable = true;
     variables = {
@@ -67,6 +78,8 @@
       };
     };
     enableNushellIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   # Replaces `cd`
@@ -77,11 +90,15 @@
       "--cmd cd"
     ];
     enableNushellIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   # Replaces `ls`
@@ -89,6 +106,7 @@
   programs.lsd = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   # Aliases

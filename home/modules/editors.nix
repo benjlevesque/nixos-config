@@ -55,6 +55,9 @@
         };
         "scm.defaultViewMode" = "tree";
         "terminal.integrated.profiles.linux" = {
+          "zsh" = {
+            "path" = "/run/current-system/sw/bin/zsh";
+          };
           "bash" = {
             "path" = "/run/current-system/sw/bin/bash";
           };
@@ -62,7 +65,7 @@
             "path" = "/run/current-system/sw/bin/nu";
           };
         };
-        "terminal.integrated.defaultProfile.linux" = "nu";
+        "terminal.integrated.defaultProfile.linux" = "zsh";
 
         "[typescriptreact]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -80,6 +83,14 @@
       export EDITOR=vim
     '';
   };
+
+  programs.zsh = {
+    # without this, EDITOR is overwritten with nano
+    initContent = ''
+      export EDITOR=vim
+    '';
+  };
+
 
   programs.neovim = {
     enable = true;
