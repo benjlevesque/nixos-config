@@ -1,18 +1,13 @@
 { pkgs, ... }: {
-  services.fwupd.enable = true;
-  # we need fwupd 1.9.7 to downgrade the fingerprint sensor firmware
-  services.fwupd.package = (import
-    (builtins.fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/bb2009ca185d97813e75736c2b8d1d8bb81bde05.tar.gz";
-      sha256 = "sha256:003qcrsq5g5lggfrpq31gcvj82lb065xvr7bpfa8ddsw8x4dnysk";
-    })
-    {
-      inherit (pkgs) system;
-    }).fwupd;
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
 
-  environment.systemPackages = with pkgs; [
-    fprintd
-  ];
-
+  # Install the driver
   services.fprintd.enable = true;
+  # If simply enabling fprintd is not enough, try enabling fprintd.tod...
+  services.fprintd.tod.enable = true;
+  # ...and use one of the next four drivers
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 }
