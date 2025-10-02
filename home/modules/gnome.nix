@@ -19,7 +19,6 @@
           "org.gnome.Console.desktop"
           "org.gnome.Nautilus.desktop"
           "code.desktop"
-          "cursor.desktop"
         ];
       };
 

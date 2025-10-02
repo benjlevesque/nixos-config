@@ -4,12 +4,8 @@
   home.packages = with pkgs; [
     nil
     nixpkgs-fmt
-    code-cursor
   ];
 
-  programs.bash.shellAliases = {
-    cursor = "cursor \"$@\" & disown";
-  };
 
   programs.vscode = {
     enable = true;
