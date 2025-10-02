@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    pass
     wl-clipboard
     bitwarden-cli
   ];
@@ -15,10 +14,24 @@
   };
 
   programs.gpg.enable = true;
+  programs.password-store.enable = true;
+
   programs.browserpass = {
     enable = true;
     browsers = [
       "firefox"
     ];
   };
+
+  # Custom fzf completion for `pass` (password-store)
+  # https://sim590.github.io/fr/outils/fzf/#pass-passwordstore
+  programs.zsh.initContent = ''
+    # fzf completion for pass
+    _fzf_complete_pass() {
+      ARGS="$@"
+      _fzf_complete "" "$@" < <(
+        command find ~/.password-store/ -name "*.gpg" | sed -r 's,(.*)\.password-store/(.*)\.gpg,\2,'
+      )
+    }
+  '';
 }
