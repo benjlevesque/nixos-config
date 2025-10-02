@@ -88,7 +88,6 @@ in
   ];
 
   programs.bash.shellAliases = gitShellAliases;
-  programs.nushell.shellAliases = gitShellAliases;
 
   programs.bash.initExtra = ''
     source ${pkgs.git}/share/bash-completion/completions/git

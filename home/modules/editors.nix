@@ -57,9 +57,6 @@
           "bash" = {
             "path" = "/run/current-system/sw/bin/bash";
           };
-          nu = {
-            "path" = "/run/current-system/sw/bin/nu";
-          };
         };
         "terminal.integrated.defaultProfile.linux" = "zsh";
 

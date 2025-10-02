@@ -24,21 +24,6 @@
     '';
   };
 
-  programs.nushell = {
-    enable = true;
-    settings = {
-      show_banner = false;
-      buffer_editor = "nvim";
-      history = {
-        file_format = "sqlite";
-        isolation = true;
-      };
-    };
-    extraConfig = ''
-      $env.DOCKER_HOST = $"unix://($env.XDG_RUNTIME_DIR)/docker.sock"
-    '';
-  };
-
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
@@ -91,7 +76,6 @@
         error_symbol = "[✗](bold red)";
       };
     };
-    enableNushellIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
@@ -103,14 +87,6 @@
     options = [
       "--cmd cd"
     ];
-    enableNushellIntegration = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
-  };
-
-  programs.carapace = {
-    enable = true;
-    enableNushellIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
