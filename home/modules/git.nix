@@ -81,6 +81,12 @@ in
 
   };
 
+  # Gitlab CLI
+  home.packages = with pkgs; [
+    glab
+    fzf-git-sh
+  ];
+
   programs.bash.shellAliases = gitShellAliases;
   programs.nushell.shellAliases = gitShellAliases;
 
