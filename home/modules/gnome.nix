@@ -15,8 +15,8 @@
           "drive-menu@gnome-shell-extensions.gcampax.github.com"
         ];
         favorite-apps = [
+          "Alacritty.desktop"
           "firefox.desktop"
-          "org.gnome.Console.desktop"
           "org.gnome.Nautilus.desktop"
           "code.desktop"
         ];
