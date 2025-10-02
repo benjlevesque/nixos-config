@@ -3,12 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix4nvchad = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,8 +33,16 @@
       unstable = import nixpkgs-unstable {
         inherit system; config = { allowUnfree = true; };
       };
+      extraSpecialArgs = { inherit system inputs unstable; };
     in
     {
+      nixpkgs = {
+        overlays = [
+          (final: prev: {
+            nvchad = inputs.nix4nvchad.packages."${pkgs.system}".nvchad;
+          })
+        ];
+      };
       nixosConfigurations = {
         nimbus = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -36,10 +52,12 @@
             ./hosts/nimbus
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.benji = import ./home/nimbus;
-              home-manager.extraSpecialArgs = { inherit unstable; };
+              home-manager = {
+                inherit extraSpecialArgs;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.benji = import ./home/nimbus;
+              };
             }
           ];
         };
@@ -50,11 +68,13 @@
             ./hosts/comet
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "hm-backup";
-              home-manager.users.benji = import ./home/comet;
-              home-manager.extraSpecialArgs = { inherit unstable; };
+              home-manager = {
+                inherit extraSpecialArgs;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+                users.benji = import ./home/comet;
+              };
             }
           ];
         };

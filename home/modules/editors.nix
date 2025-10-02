@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, inputs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -88,16 +88,31 @@
   };
 
 
-  programs.neovim = {
+  imports = [ inputs.nix4nvchad.homeManagerModule ];
+  programs.nvchad = {
     enable = true;
-    # not working, see above hack
-    # defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-    ];
-  };
+    backup = false;
 
+    extraPackages = with pkgs; [ nixfmt-classic ];
+    extraPlugins = ''
+      return {
+        {"stevearc/conform.nvim", lazy = true},
+        {"benoror/gpg.nvim", lazy = false},
+      }
+    '';
+    extraConfig = ''
+      local M = require("chadrc")
+      M.ui = M.ui or {}
+      M.ui.theme = "catppuccin"
+      require("conform").setup({
+        format_on_save = {
+          timeout_ms = 500,
+            lsp_fallback = true,
+          },
+          formatters_by_ft = {
+             nix = { "nixfmt" },
+          },
+      })
+    '';
+  };
 }
