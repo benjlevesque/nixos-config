@@ -5,7 +5,7 @@
     ../modules/security.nix
     ../modules/git.nix
     ../modules/editors.nix
-    ../modules/work.nix
+    ../modules/work
     ../modules/gnome.nix
     ../modules/devenv.nix
     ../modules/layout.nix
