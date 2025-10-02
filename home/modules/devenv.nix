@@ -10,5 +10,6 @@
   };
   home.packages = with pkgs; [
     devenv
+    nix-prefetch-git
   ];
 }
