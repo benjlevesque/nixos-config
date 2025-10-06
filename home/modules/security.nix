@@ -30,7 +30,7 @@
     _fzf_complete_pass() {
       ARGS="$@"
       _fzf_complete "" "$@" < <(
-        command find ~/.password-store/ -name "*.gpg" | sed -r 's,(.*)\.password-store/(.*)\.gpg,\2,'
+        command find "''${PASSWORD_STORE_DIR:-''${HOME}/.password-store}" -name "*.gpg" | sed -r 's,(.*)\.password-store/(.*)\.gpg,\2,'
       )
     }
   '';
