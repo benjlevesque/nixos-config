@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 let
   gitShellAliases = {
     gco = "git checkout";
@@ -72,6 +72,7 @@ in
 
   programs.gh = {
     enable = true;
+    package = unstable.gh;
     settings = {
       git_protocol = "ssh";
       aliases = {
