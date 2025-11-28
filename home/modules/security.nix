@@ -11,6 +11,7 @@
     pinentry.package = pkgs.pinentry-gnome3;
     maxCacheTtl = 4 * 60 * 60; # 4 hours
     defaultCacheTtl = 1 * 60 * 60; # 1 hour
+    enableSshSupport = true;
   };
 
   programs.gpg.enable = true;
@@ -26,10 +27,17 @@
     ];
   };
 
-  # Custom fzf completion for `pass` (password-store)
-  # https://sim590.github.io/fr/outils/fzf/#pass-passwordstore
+
   programs.zsh.initContent = ''
-    # fzf completion for pass
+    # Using gpg-agent as ssh-agent
+    # https://medium.com/@chrispisano/ssh-authentication-with-gpg-411676781647 
+    unset SSH_AGENT_PID
+    if [ "''${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    fi
+
+    # Custom fzf completion for `pass` (password-store)
+    # https://sim590.github.io/fr/outils/fzf/#pass-passwordstore
     _fzf_complete_pass() {
       ARGS="$@"
       PASS_PATH="''${PASSWORD_STORE_DIR:-$HOME/.password-store}"
@@ -38,4 +46,5 @@
       )
     }
   '';
+
 }
