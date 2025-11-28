@@ -7,15 +7,15 @@ pkgs.buildGoModule rec {
     owner = "control-theory";
     repo = "gonzo";
     rev = "v${version}";
-    sha256 = lib.fakeSha256;
+    sha256 = "sha256-P8Ntt8Dj5zq+Ff5MkZEvWabk2w5Cm6tXxl3ssMxDNok=";
   };
 
-  vendorHash = lib.fakeSha256;
+  vendorHash = "sha256-XKwtq8EF774lHLHtyFzveFa5agJa15CvhsuwwaQdJwU=";
 
   meta = with lib; {
     description = "A Go package from control-theory";
     homepage = "https://github.com/control-theory/gonzo";
-    license = licenses.unfree; # Update with correct license
+    license = licenses.mit;
     maintainers = [ ];
   };
 }
