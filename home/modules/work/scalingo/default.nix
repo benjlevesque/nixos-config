@@ -4,13 +4,14 @@
 
 pkgs.buildGoModule rec {
   pname = "scalingo";
-  version = "1.39.0";
+  version = "1.41.0";
 
   src = pkgs.fetchFromGitHub {
     owner = pname;
     repo = "cli";
     rev = version;
-    hash = "sha256-5La3k6DXCYpnTgtnHolJ5pL7EPjkO+bXgT48gcRsbsc=";
+    # nix flake prefetch github:scalingo/cli/1.41.0 --json | jq .hash -r
+    hash = "sha256-JP5sSE9xWAB9yVuFh74s85zh9y4t8f+VwUVmn6iMPFI=";
   };
 
   vendorHash = null;
