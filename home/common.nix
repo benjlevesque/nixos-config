@@ -1,6 +1,4 @@
-{ config
-, lib
-, pkgs
+{ pkgs
 , ...
 }:
 
@@ -12,7 +10,7 @@
 
   nix.gc = {
     automatic = true;
-    frequency = "weekly";
+    dates = "weekly";
   };
 
   # Packages that should be installed to the user profile.

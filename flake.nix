@@ -2,10 +2,10 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
@@ -98,6 +98,7 @@
             };
         };
 
+      # if pre-commit is not found, enter devshell with `nix develop` to reset it.
       checks = {
         x86_64-linux = {
           pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {

@@ -1,4 +1,4 @@
-{ pkgs, lib, unstable, ... }:
+{ pkgs, lib, ... }:
 let
   s3 = import ./s3 { inherit pkgs; };
   scalingo = import ./scalingo { inherit lib pkgs; };
@@ -8,7 +8,7 @@ in
   home.packages = [
     pkgs.mattermost-desktop
     pkgs.clever-tools
-    pkgs.onlyoffice-bin
+    pkgs.onlyoffice-desktopeditors
     pkgs.s3cmd
     s3
     scalingo

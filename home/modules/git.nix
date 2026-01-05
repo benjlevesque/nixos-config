@@ -17,13 +17,15 @@ in
 {
   programs.git = {
     enable = true;
-
-    userEmail = "14175665+benjlevesque@users.noreply.github.com";
-    userName = "Benjamin Levesque";
     signing = {
       key = "0x7B58E6DDBA4ECC8D";
     };
-    extraConfig = {
+    settings = {
+      user = {
+        email = "14175665+benjlevesque@users.noreply.github.com";
+        name = "Benjamin Levesque";
+      };
+
       branch.sort = "-committerdate";
       commit.gpgsign = true;
       core.abrrev = 7;
