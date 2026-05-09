@@ -10,4 +10,6 @@
   services.fwupd.enable = true;
 
   networking.hostName = "comet";
+
+  services.tailscale.enable = true;
 }
