@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ../common.nix
+    ../modules/ai.nix
     ../modules/shell.nix
     ../modules/security.nix
     ../modules/git.nix
