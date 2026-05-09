@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, unstable, ... }: {
 
   programs.direnv = {
     enable = true;
@@ -8,7 +8,7 @@
     enableBashIntegration = true;
   };
   home.packages = with pkgs; [
-    devenv
+    unstable.devenv
     nix-prefetch-git
   ];
 }
