@@ -4,7 +4,7 @@
     ".XCompose".source = config.lib.file.mkOutOfStoreSymlink (builtins.fetchGit {
       url = "https://github.com/raelgc/win_us_intl";
       ref = "master";
-      rev = "1257756d27be78024e360db69da85ef73fbe3617";
+      rev = "aa3b4cbb19f0877b62ad0b25aed1d6bd49ff6e8c";
     }).outPath + "/.XCompose";
   };
 }
