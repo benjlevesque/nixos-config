@@ -5,21 +5,21 @@ let
     gcb = "git checkout -b";
     gst = "git status";
     grb = "git rebase";
-    grbc = "git rebase --continue";
+    grbc = "git -c core.editor=true rebase --continue";
+    grbc2 = "git -c core.editor=true rebase --continue";
     gp = "git push";
     gpf = "git push --force-with-lease";
     gcm = "git commit --message";
     glog = "git log --oneline --decorate --graph";
     pr = "${pkgs.gh}/bin/gh pr create --fill-first";
     ghst = "${pkgs.gh}/bin/gh status";
+    wip = "git commit --message \"🚧 WIP\" --no-verify";
   };
 in
 {
   programs.git = {
     enable = true;
-    signing = {
-      key = "0x7B58E6DDBA4ECC8D";
-    };
+    signing = { key = "0x7B58E6DDBA4ECC8D"; };
     settings = {
       user = {
         email = "14175665+benjlevesque@users.noreply.github.com";
@@ -45,6 +45,7 @@ in
       init.defaultBranch = "main";
       log.date = "relative";
       rebase.autoStash = true;
+      rebase.updateRefs = true;
       rerere.enabled = true;
       tag.sort = "-v:refname";
       # tag.sort = "version:refname";
@@ -77,20 +78,16 @@ in
     package = unstable.gh;
     settings = {
       git_protocol = "ssh";
-      aliases = {
-        co = "pr checkout";
-      };
+      aliases = { co = "pr checkout"; };
     };
 
   };
 
   # Gitlab CLI
-  home.packages = with pkgs; [
-    glab
-    fzf-git-sh
-  ];
+  home.packages = with pkgs; [ glab fzf-git-sh ];
 
   programs.bash.shellAliases = gitShellAliases;
+  programs.zsh.shellAliases = gitShellAliases;
 
   programs.bash.initExtra = ''
     source ${pkgs.git}/share/bash-completion/completions/git
@@ -99,6 +96,5 @@ in
     }
     __git_complete gco _git_checkout_no_tags
   '';
-
 
 }
