@@ -19,6 +19,7 @@
     jq
     gimp
     inkscape
+    just
   ];
 
   # This value determines the Home Manager release that your
