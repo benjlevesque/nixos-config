@@ -41,13 +41,6 @@
       forEachSystem = nixpkgs.lib.genAttrs [ system ];
     in
     {
-      nixpkgs = {
-        overlays = [
-          (final: prev: {
-            nvchad = inputs.nix4nvchad.packages."${pkgs.system}".nvchad;
-          })
-        ];
-      };
       nixosConfigurations = {
         nimbus = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -90,13 +83,13 @@
         "benji@comet" = home-manager.lib.homeManagerConfiguration {
           modules = [ (import ./home/comet) ];
           inherit pkgs;
-          extraSpecialArgs = { inherit unstable; };
+          extraSpecialArgs = { inherit inputs unstable; };
 
         };
         "benji@nimbus" = home-manager.lib.homeManagerConfiguration {
           modules = [ (import ./home/nimbus) ];
           inherit pkgs;
-          extraSpecialArgs = { inherit unstable; };
+          extraSpecialArgs = { inherit inputs unstable; };
         };
       };
 
