@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    git-hooks.url = "github:cachix/git-hooks.nix";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +38,7 @@
         };
       };
       extraSpecialArgs = { inherit system inputs unstable; };
+      forEachSystem = nixpkgs.lib.genAttrs [ system ];
     in
     {
       nixpkgs = {
@@ -50,7 +51,7 @@
       nixosConfigurations = {
         nimbus = nixpkgs.lib.nixosSystem {
           inherit system;
-          inherit unstable;
+          specialArgs = { inherit unstable; };
 
           modules = [
             ./hosts/nimbus
@@ -104,24 +105,30 @@
         x86_64-linux = pkgs.nixfmt;
       };
 
-      checks = {
-        x86_64-linux = {
-          pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {
-            src = ./.;
-            hooks = {
-              nixfmt.enable = true;
-            };
+      # Run the hooks in a sandbox with `nix flake check`.
+      # Read-only filesystem and no internet access.
+      checks = forEachSystem (system: {
+        pre-commit-check = inputs.git-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt.enable = true;
           };
         };
-      };
-      devShells = {
-        x86_64-linux = {
-          default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-            inherit (self.checks.x86_64-linux.pre-commit-check) shellHook;
-            buildInputs = self.checks.x86_64-linux.pre-commit-check.enabledPackages;
-          };
-        };
-      };
+      });
 
+      # Enter a development shell with `nix develop`.
+      # The hooks will be installed automatically.
+      # Or run pre-commit manually with `nix develop -c pre-commit run --all-files`
+      devShells = forEachSystem (system: {
+        default =
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+            inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+          in
+          pkgs.mkShell {
+            inherit shellHook;
+            buildInputs = enabledPackages;
+          };
+      });
     };
 }
