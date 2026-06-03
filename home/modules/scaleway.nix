@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 let
   scalewaySecretPath = "home/Dev/scaleway/secret-key";
   wrappedScw = pkgs.runCommand "wrapped-scw"
     {
-      buildInputs = [ pkgs.makeWrapper pkgs.scaleway-cli ];
+      buildInputs = [ pkgs.makeWrapper unstable.scaleway-cli ];
     } ''
     mkdir -p $out/bin
 
@@ -22,7 +22,7 @@ let
 
     export SCW_SECRET_KEY
 
-    exec ${pkgs.scaleway-cli}/bin/scw "$@"
+    exec ${unstable.scaleway-cli}/bin/scw "$@"
     EOF
 
     chmod +x $out/bin/scw

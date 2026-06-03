@@ -4,6 +4,8 @@
     ./disks.nix
     ../common.nix
     ./fingerprint.nix
+    ./fix-swap-encryption.nix
+
   ];
 
   # BIOS updates
