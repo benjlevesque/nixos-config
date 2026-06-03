@@ -99,12 +99,16 @@
         };
 
       # if pre-commit is not found, enter devshell with `nix develop` to reset it.
+      formatter = {
+        x86_64-linux = pkgs.nixfmt;
+      };
+      
       checks = {
         x86_64-linux = {
           pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {
             src = ./.;
             hooks = {
-              nixpkgs-fmt.enable = true;
+              nixfmt.enable = true;
             };
           };
         };

@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     nil
-    nixpkgs-fmt
+    nixfmt
   ];
 
 
@@ -42,10 +42,11 @@
         "window.menuBarVisibility" = "toggle";
         "editor.formatOnSave" = true;
         "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
         "nix.serverSettings" = {
           nil = {
             formatting = {
-              command = [ "nixpkgs-fmt" ];
+              command = [ "nixfmt" ];
             };
           };
         };
@@ -100,7 +101,7 @@
     enable = true;
     backup = false;
 
-    extraPackages = with pkgs; [ nixfmt-classic ];
+    extraPackages = with pkgs; [ nixfmt ];
     extraPlugins = ''
       return {
         {"stevearc/conform.nvim", lazy = true},
