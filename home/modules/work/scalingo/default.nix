@@ -1,5 +1,6 @@
-{ lib
-, pkgs
+{
+  lib,
+  pkgs,
 }:
 
 pkgs.buildGoModule rec {
@@ -26,14 +27,13 @@ pkgs.buildGoModule rec {
     rm $out/bin/dists
     installShellCompletion --cmd scalingo \
       --bash cmd/autocomplete/scripts/scalingo_complete.bash
-    
+
     # Generate Zsh completion
     $out/bin/scalingo completion zsh > _scalingo
     install -Dm644 _scalingo $out/share/zsh/site-functions/_scalingo
-    
+
     rm _scalingo
   '';
-
 
   meta = with lib; {
     description = "Command line client for the Scalingo PaaS";

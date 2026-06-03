@@ -19,7 +19,9 @@ in
 {
   programs.git = {
     enable = true;
-    signing = { key = "0x7B58E6DDBA4ECC8D"; };
+    signing = {
+      key = "0x7B58E6DDBA4ECC8D";
+    };
     settings = {
       user = {
         email = "14175665+benjlevesque@users.noreply.github.com";
@@ -78,13 +80,18 @@ in
     package = unstable.gh;
     settings = {
       git_protocol = "ssh";
-      aliases = { co = "pr checkout"; };
+      aliases = {
+        co = "pr checkout";
+      };
     };
 
   };
 
   # Gitlab CLI
-  home.packages = with pkgs; [ glab fzf-git-sh ];
+  home.packages = with pkgs; [
+    glab
+    fzf-git-sh
+  ];
 
   programs.bash.shellAliases = gitShellAliases;
   programs.zsh.shellAliases = gitShellAliases;

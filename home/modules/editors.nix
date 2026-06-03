@@ -1,4 +1,9 @@
-{ pkgs, unstable, inputs, ... }:
+{
+  pkgs,
+  unstable,
+  inputs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -6,17 +11,19 @@
     nixfmt
   ];
 
-
   programs.vscode = {
     enable = true;
     package = unstable.vscode;
 
     profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
+      extensions =
+        with pkgs.vscode-extensions;
+        [
         esbenp.prettier-vscode
         dbaeumer.vscode-eslint
         jnoortheen.nix-ide
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-toggle-quotes";
           publisher = "BriteSnow";
@@ -94,7 +101,6 @@
       export EDITOR=vim
     '';
   };
-
 
   imports = [ inputs.nix4nvchad.homeManagerModule ];
   programs.nvchad = {

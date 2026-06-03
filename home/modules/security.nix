@@ -27,7 +27,6 @@
     ];
   };
 
-
   programs.zsh.initContent = ''
     # Using gpg-agent as ssh-agent
     # https://medium.com/@chrispisano/ssh-authentication-with-gpg-411676781647 

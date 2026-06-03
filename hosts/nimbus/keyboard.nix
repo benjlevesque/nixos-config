@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # Enable keyboard remapping daemon
   services.keyd = {
     enable = true;

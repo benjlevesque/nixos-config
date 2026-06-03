@@ -20,18 +20,22 @@
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , nixpkgs-unstable
-    , disko
-    , home-manager
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      disko,
+      home-manager,
+      ...
     }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       unstable = import nixpkgs-unstable {
-        inherit system; config = { allowUnfree = true; };
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
       };
       extraSpecialArgs = { inherit system inputs unstable; };
     in
@@ -81,28 +85,25 @@
 
       };
       # enable home-manager switch
-      homeConfigurations =
-        {
-          "benji@comet" =
-            home-manager.lib.homeManagerConfiguration {
-              modules = [ (import ./home/comet) ];
-              inherit pkgs;
-              extraSpecialArgs = { inherit unstable; };
+      homeConfigurations = {
+        "benji@comet" = home-manager.lib.homeManagerConfiguration {
+          modules = [ (import ./home/comet) ];
+          inherit pkgs;
+          extraSpecialArgs = { inherit unstable; };
 
-            };
-          "benji@nimbus" =
-            home-manager.lib.homeManagerConfiguration {
-              modules = [ (import ./home/nimbus) ];
-              inherit pkgs;
-              extraSpecialArgs = { inherit unstable; };
-            };
         };
+        "benji@nimbus" = home-manager.lib.homeManagerConfiguration {
+          modules = [ (import ./home/nimbus) ];
+          inherit pkgs;
+          extraSpecialArgs = { inherit unstable; };
+        };
+      };
 
       # if pre-commit is not found, enter devshell with `nix develop` to reset it.
       formatter = {
         x86_64-linux = pkgs.nixfmt;
       };
-      
+
       checks = {
         x86_64-linux = {
           pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {

@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 {
@@ -111,7 +112,9 @@
     "....." = "cd ../../../..";
   };
 
-  programs.alacritty = { enable = true; };
+  programs.alacritty = {
+    enable = true;
+  };
 
   programs.tmux = {
     enable = true;
@@ -185,4 +188,3 @@
     enableBashIntegration = true;
   };
 }
-

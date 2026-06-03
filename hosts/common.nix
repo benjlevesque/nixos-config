@@ -10,10 +10,12 @@
   boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+  networking.nameservers = [
+    "1.1.1.1"
+    "9.9.9.9"
+  ];
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
@@ -155,7 +157,10 @@
       "nix-command"
       "flakes"
     ];
-    trusted-users = [ "root" "benji" ];
+    trusted-users = [
+      "root"
+      "benji"
+    ];
     substituters = [
       "https://nix-community.cachix.org"
       "https://devenv.cachix.org"
