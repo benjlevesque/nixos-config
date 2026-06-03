@@ -115,9 +115,7 @@
       }
     '';
     extraConfig = ''
-      local M = require("chadrc")
-      M.ui = M.ui or {}
-      M.ui.theme = "catppuccin"
+      require("chadrc")
       require("conform").setup({
         format_on_save = {
           timeout_ms = 500,
@@ -127,6 +125,15 @@
              nix = { "nixfmt" },
           },
       })
+    '';
+    chadrcConfig = ''
+      local M = {}
+      M.ui = M.ui or {}
+      M.ui.theme = "catppuccin"
+      M.nvdash = {
+          load_on_startup = true,
+      }
+      return M
     '';
   };
 
