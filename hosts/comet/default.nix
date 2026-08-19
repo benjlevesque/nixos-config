@@ -6,7 +6,7 @@
     ../common.nix
     ./fingerprint.nix
     ./fix-swap-encryption.nix
-
+    ../modules/games.nix
   ];
 
   # BIOS updates
