@@ -3,6 +3,7 @@ let
   s3 = import ./s3 { inherit pkgs; };
   scalingo = import ./scalingo { inherit lib pkgs; };
   gonzo = import ./gonzo.nix { inherit lib pkgs; };
+  tchap = import ./tchap.nix { inherit lib pkgs; };
 in
 {
   home.packages = [
@@ -14,11 +15,15 @@ in
     scalingo
     pkgs.thunderbird-latest-unwrapped
     gonzo
+    tchap
   ];
 
   dconf.settings = {
     "org/gnome/shell" = {
-      favorite-apps = [ "Mattermost.desktop" ];
+      favorite-apps = [
+        "tchap.desktop"
+        "Mattermost.desktop"
+      ];
     };
   };
 }
