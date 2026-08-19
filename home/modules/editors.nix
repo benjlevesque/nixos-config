@@ -9,6 +9,8 @@
   home.packages = with pkgs; [
     nil
     nixfmt
+    gopls
+    gofumpt
   ];
 
   programs.vscode = {
@@ -107,7 +109,11 @@
     enable = true;
     backup = false;
 
-    extraPackages = with pkgs; [ nixfmt ];
+    extraPackages = with pkgs; [
+      nixfmt
+      gopls
+      gofumpt
+    ];
     extraPlugins = ''
       return {
         {"stevearc/conform.nvim", lazy = true},
@@ -116,6 +122,9 @@
     '';
     extraConfig = ''
       require("chadrc")
+      vim.opt.relativenumber = true
+      require("lspconfig").gopls.setup({})
+
       require("conform").setup({
         format_on_save = {
           timeout_ms = 500,
@@ -123,6 +132,7 @@
           },
           formatters_by_ft = {
              nix = { "nixfmt" },
+             go = { "gofumpt" },
           },
       })
     '';
