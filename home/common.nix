@@ -22,6 +22,8 @@
     inkscape
     just
     ripgrep
+    restic
+    autorestic
   ];
 
   # This value determines the Home Manager release that your
