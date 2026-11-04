@@ -4,7 +4,7 @@ default:
 # Rebuilds the system
 rebuild:
 	nixos-rebuild --flake ~/.nixos --sudo switch
-# Uprades the system 
+# Upgrades the system 
 upgrade:
 	nixos-rebuild --flake ~/.nixos --sudo switch --upgrade
 

@@ -104,7 +104,7 @@
     '';
   };
 
-  imports = [ inputs.nix4nvchad.homeManagerModule ];
+  imports = [ inputs.nix4nvchad.homeManagerModules.default ];
   programs.nvchad = {
     enable = true;
     backup = false;

@@ -10,7 +10,7 @@
     };
     git-hooks.url = "github:cachix/git-hooks.nix";
     disko = {
-      url = "github:nix-community/disko";
+      url = "github:nix-community/disko/v1.13.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix4nvchad = {
