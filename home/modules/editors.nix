@@ -45,48 +45,6 @@
             sha256 = "XnPTMFNgMGT2tJe8WlmhMB3DluvMZx9Ee2w7xMCzLYM=";
           }
         ];
-      userSettings = {
-        "editor.fontFamily" = "FiraCode Nerd Font Mono";
-
-        "window.menuBarVisibility" = "toggle";
-        "editor.formatOnSave" = true;
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
-        "nix.serverSettings" = {
-          nil = {
-            formatting = {
-              command = [ "nixfmt" ];
-            };
-          };
-        };
-        "scm.defaultViewMode" = "tree";
-        "terminal.integrated.profiles.linux" = {
-          "zsh" = {
-            "path" = "/run/current-system/sw/bin/zsh";
-          };
-          "bash" = {
-            "path" = "/run/current-system/sw/bin/bash";
-          };
-        };
-        "terminal.integrated.defaultProfile.linux" = "zsh";
-
-        "[typescriptreact]" = {
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
-        };
-        "[typescript]" = {
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
-        };
-        "json.schemaDownload.trustedDomains" = {
-          "https://schemastore.azurewebsites.net/" = true;
-          "https://raw.githubusercontent.com/microsoft/vscode/" = true;
-          "https://raw.githubusercontent.com/devcontainers/spec/" = true;
-          "https://www.schemastore.org/" = true;
-          "https://json.schemastore.org/" = true;
-          "https://json-schema.org/" = true;
-          "https://developer.microsoft.com/json-schemas/" = true;
-          "https://biomejs.dev" = true;
-        };
-      };
     };
   };
 
