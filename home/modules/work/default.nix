@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
   s3 = import ./s3 { inherit pkgs; };
-  scalingo = import ./scalingo { inherit lib pkgs; };
+  # scalingo = import ./scalingo { inherit lib pkgs; };
   gonzo = import ./gonzo.nix { inherit lib pkgs; };
   tchap = import ./tchap.nix { inherit lib pkgs; };
 in
@@ -12,7 +12,7 @@ in
     pkgs.onlyoffice-desktopeditors
     pkgs.s3cmd
     s3
-    scalingo
+    pkgs.scalingo
     pkgs.thunderbird-latest-unwrapped
     gonzo
     tchap
