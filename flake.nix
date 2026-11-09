@@ -44,7 +44,7 @@
       nixosConfigurations = {
         nimbus = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit unstable; };
+          specialArgs = { inherit self; };
 
           modules = [
             ./hosts/nimbus
@@ -61,6 +61,8 @@
         };
         comet = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit self; };
+
           modules = [
             disko.nixosModules.disko
             ./hosts/comet
