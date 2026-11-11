@@ -7,7 +7,7 @@
 
 {
   home.packages = with pkgs; [
-    nil
+    nixd
     nixfmt
     gopls
     gofumpt
